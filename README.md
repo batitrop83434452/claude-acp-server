@@ -19,7 +19,6 @@ You need a working Claude Code install and authentication (`claude` on `PATH`, o
 ## Install
 
 ```bash
-git clone <your-repo-url> claude-acp-server
 cd claude-acp-server
 npm install
 npm run build
