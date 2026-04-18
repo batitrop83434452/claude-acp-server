@@ -1,0 +1,57 @@
+{
+  "name": "claude-acp-server",
+  "version": "1.0.0",
+  "description": "Agent Client Protocol (ACP) server that exposes Claude Code to editors over stdio or WebSocket",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "claude-acp-server": "dist/index.js"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "engines": {
+    "node": ">=20.18"
+  },
+  "scripts": {
+    "build": "node ./node_modules/typescript/bin/tsc",
+    "dev": "node ./node_modules/tsx/dist/cli.mjs watch src/index.ts",
+    "start": "node dist/index.js",
+    "start:ws": "node dist/index.js --mode ws",
+    "test": "node ./node_modules/vitest/vitest.mjs run",
+    "test:watch": "node ./node_modules/vitest/vitest.mjs",
+    "clean": "rm -rf dist",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "acp",
+    "agent-client-protocol",
+    "claude",
+    "claude-code",
+    "zed",
+    "json-rpc"
+  ],
+  "license": "MIT",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    ".env.example"
+  ],
+  "dependencies": {
+    "@agentclientprotocol/sdk": "^0.19.0",
+    "ws": "^8.18.2",
+    "zod": "^3.25.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.14.0",
+    "@types/ws": "^8.18.1",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.2",
+    "vitest": "^3.1.1"
+  }
+}
